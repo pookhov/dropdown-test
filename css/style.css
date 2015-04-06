@@ -1,0 +1,166 @@
+
+@font-face {
+    font-family: 'Calibri';
+    font-size: 20px;
+}
+
+body {
+    text-shadow: -1px -1px 1px #a7a7a7;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+ul {
+    -webkit-padding-start: 0px;
+}
+
+div.container {
+    display: inline-block; position: relative;
+    width: 155px;
+    margin: 0;
+
+}
+
+.wrapper-dropdown {
+    /* Size and position */
+    position: relative;
+    width: 155px;
+    margin: 0;
+    padding: 3px;
+    padding-left: 10px;
+
+
+    /* Styles */
+
+    background: url("../img2/shape-77.png") no-repeat center right 7% #ffffff;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    outline: none;
+
+    /* Font settings */
+    font-weight: normal;
+    color: #333333;
+    font-size: 20px;
+    display: inline-block;
+
+
+}
+
+.chosen {
+    background: url("../img2/check-mark.png") no-repeat center right 7%;
+}
+
+.bingo {
+    background-color: #edfad4;
+}
+
+.bingo:hover {
+    background: #ffffd9;
+}
+
+ul.dropdown {
+  /* Size & position */
+
+    position: inherit;
+    left: -174px;
+    right: 0;
+    width: 168px;
+    margin: 0;
+    outline: none;
+    top: 120px;
+
+    /* Styles */
+    background: white;
+    border: 1px solid #cccccc;
+    /*font-weight: normal;*/
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    list-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    /* Hiding */
+    opacity: 0;
+
+    pointer-events: none;
+    font-weight: normal;
+    color: #333333;
+    font-size: 20px;
+    display: inline-block;
+}
+
+
+ul.dropdown > li:first-child, ul.dropdown > li:last-child {
+    border-radius: 5px;
+}
+
+.wrapper-dropdown:hover {
+    border: 1px solid #aaaaaa;
+
+}
+
+.wrapper-dropdown:focus {
+    border: 1px solid #aaaaaa;
+
+}
+
+.wrapper-dropdown:active {
+    background-color: #f5f5f5;
+    border: 1px solid #aaaaaa;
+}
+
+ul.dropdown li {
+    display: block;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+
+}
+
+ul.dropdown li span {
+    position: relative;
+    left: 10px;
+}
+
+/* Hover state */
+
+ul.dropdown li:hover  {
+    background-color: #ffffd9;
+}
+
+ul.dropdown li.chosen:hover {
+    background: url("../img2/check-mark.png") no-repeat center right 7% #ffffd9;
+}
+
+/* Active state */
+
+ul.dropdown.active {
+    opacity: 1;
+    pointer-events: auto;    ;
+}
+
+.right, .right:hover, .right:active {
+    background: url("../img2/white-shape-77.png") no-repeat center right 7% #add166;
+    color: #ffffff;
+    border: 1px solid #add166;
+}
+
+.wrong, .wrong:hover, .wrong:active {
+    background: url("../img2/white-shape-77.png") no-repeat center right 7% #f58e8e;
+    color: #ffffff;
+    border: 1px solid #f58e8e;
+}
+
+.selected-li  {
+    background-color: #ffffd9;
+}
+

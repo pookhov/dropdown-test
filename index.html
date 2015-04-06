@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Тестовое задание Пухов Сергей</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+
+<div style="white-space: nowrap;">
+    <div style="display: inline-block;">
+        They formed the band Wilson Philips in
+
+
+        </div>
+
+          <div class="container">
+            <div id="dd" class="wrapper-dropdown" tabindex="1">
+                <span>&nbsp;</span>
+            </div>
+    <ul class="dropdown">
+        <li class="first-li"><span>&nbsp;</span></li>
+        <li><span>Paris</span></li>
+        <li class="bingo"><span>Moscow</span></li>
+        <li><span>San Francisco</span></li>
+
+    </ul>
+          </div> &nbsp;&nbsp;&nbsp; This is the cool band.
+
+
+<div>
+        But, like most older sisters, she wasn’t at all interested in her younger sister.
+
+    </div>
+</div>
+
+</body>
+
+
+<script type="text/javascript">
+
+    function DropDown(el) {
+        this.dd = el;
+        this.placeholder = this.dd.children('span');
+        this.opts = $('ul.dropdown > li');
+        this.val = '';
+        this.index = 0;
+        this.size = this.opts.size();
+    }
+
+    var dd = new DropDown($('#dd'));
+    $(document).click(function () {
+        $('ul.dropdown').removeClass('active');
+    });
+
+    $('#dd').removeClass('right');
+    $('#dd').removeClass('wrong');
+
+
+    $("ul.dropdown li").each(function (i, value) {
+        if ($(value).hasClass('chosen')) {
+            dd.val = $(value).text();
+            dd.index = $(value).index();
+            dd.placeholder.text($(value).text());
+            if ($(value).hasClass('bingo') && !$(value).hasClass('first-li')) {
+                $('#dd').addClass('right');
+            } else {
+                $('#dd').addClass('wrong');
+            }
+        }
+    });
+
+
+    $("#dd").on('click', function (event) {
+        $(this).focus();
+        $('ul.dropdown').toggleClass('active');
+        $('ul.dropdown > li').each(function (i, value) {
+            $(value).removeClass('selected-li');
+        });
+        $('ul.dropdown > li:eq(' + dd.index + ')').addClass('selected-li');
+
+        return false;
+    });
+
+    $("ul.dropdown li").on('click', function () {
+        var opt = $(this);
+        var chosen = opt.hasClass('chosen');
+        $('#dd').removeClass('right');
+        $('#dd').removeClass('wrong');
+
+        $("ul.dropdown li").each(function (i, value) {
+            $(value).removeClass('chosen');
+        });
+
+        if (!chosen && !opt.hasClass('first-li')) {
+            opt.addClass('chosen');
+            dd.val = opt.text();
+            dd.index = opt.index();
+            dd.placeholder.text(opt.text());
+
+            if (opt.hasClass('bingo') && !opt.hasClass('first-li')) {
+                $('#dd').addClass('right');
+            } else {
+                $('#dd').addClass('wrong');
+            }
+        } else {
+            dd.placeholder.html('&nbsp;');
+            dd.index = 0;
+        }
+    });
+
+    $('#dd').on('keydown', (function (e) {
+        if (e.which == 32) {
+            $('ul.dropdown').toggleClass('active');
+            if($('ul.dropdown').hasClass('active')) {
+                $('ul.dropdown > li').each(function (i, value) {
+                    $(value).removeClass('selected-li');
+                });
+                $('ul.dropdown > li:eq(' + dd.index + ')').addClass('selected-li'); 1
+            }
+
+        }
+
+        if (e.which == 13) {
+            if ($('ul.dropdown').hasClass('active')) {
+                $('ul.dropdown > li:eq(' + dd.index + ')').trigger('click');
+            } else {
+                $('ul.dropdown').addClass('active');
+
+                if ($('ul.dropdown > li').find('.selected-li') == 'undefined') {
+                    dd.index = 0;
+                    $("li.first-li").addClass('selected-li');
+                }
+            }
+        }
+
+        if (e.which == 40) {
+            if (dd.index == dd.size - 1) {
+                //e.stopPropagation();
+                return;
+            } else {
+                if ($('ul.dropdown').hasClass('active')) {
+                    dd.index++;
+                    $('ul.dropdown > li').each(function (i, value) {
+                        $(value).removeClass('selected-li');
+                    });
+                } else {
+                    $('ul.dropdown').addClass('active');
+                }
+
+                $('ul.dropdown > li:eq(' + dd.index + ')').addClass('selected-li');
+            }
+        }
+
+        if (e.which == 38) {
+            if (dd.index == 0) {
+                return;
+            } else {
+                dd.index--;
+                $('ul.dropdown > li').each(function (i, value) {
+                    $(value).removeClass('selected-li');
+                });
+                $('ul.dropdown > li:eq(' + dd.index + ')').addClass('selected-li');
+            }
+        }
+
+        if (e.which == 27) {
+            $('ul.dropdown').removeClass('active');
+        }
+    }));
+
+
+    $("ul.dropdown li").on('mouseout', function () {
+        $(this).removeClass('selected-li');
+    });
+
+</script>
+</html>
